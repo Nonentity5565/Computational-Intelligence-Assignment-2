@@ -1,2 +1,2 @@
-# Computational-Intelligence-Assignment2
+# Computational Intelligence Assignment 2
  
