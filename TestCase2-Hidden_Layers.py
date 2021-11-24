@@ -1,12 +1,9 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import random
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import confusion_matrix
-
 
 # Function to split data into test and training data
 def split_data(csv, train_ratio, random_val, scale=True):
@@ -31,53 +28,6 @@ def neural_network(data, hidden_layer_size, activation, solver, max_iter, shuffl
     prediction = mlp.predict(data[1])
     return [prediction, confusion_matrix(data[3], prediction), mlp.score(data[1], data[3])]
 
-# Test different combinations of activation functions and solvers
-def activation_solver_test(csv):
-    # Different activation and solver combinations
-    activations = ["identity", "logistic", "tanh", "relu"]
-    solvers = ["lbfgs", "sgd", "adam"]
-
-    # Test variables
-    num_test = 20
-    max_iteration = 50000
-    hidden_layer = (20, 20)
-    train_ratio = 0.8
-    compiled_results = [[] for i in range(len(activations))]
-    plt.figure()
-
-    # Run tests
-    for test in range(num_test):
-        print("Test run {} beginning".format(test+1))
-        data = split_data(csv, train_ratio, test, True)
-        for activation in activations:
-            for solver in solvers:
-                compiled_results[activations.index(activation)].append(neural_network(data, hidden_layer, activation, solver, max_iteration, False, test))
-            print("Activation {} completed".format(activation.upper()))
-        print("Test run {} completed\n".format(test+1))
-
-    # Plotting Figures
-    for i in range(len(activations)):
-        avg_score = []
-        
-        # Calculating mean score of all test
-        for j in range(len(solvers)):
-            avg_score.append((sum([result[2] for result in compiled_results[i][j::3]])/num_test))
-        
-        # Adding score value to figure
-        for j in range(len(solvers)):
-            plt.text(j, avg_score[j], round(avg_score[j], 4))
-
-        # Plotting
-        plt.bar(solvers, avg_score)
-        plt.title(activations[i].capitalize())
-        plt.ylabel("Mean Score")
-        plt.xlabel("Solvers")
-        plt.savefig("figures/activation_solver_test/{} with different solvers".format(activations[i].capitalize()),bbox_inches="tight")
-        plt.show()
-        plt.figure()
-
-    print("Activation-Solver test completed")
-
 # Test different number of hidden layer and neurons in each layer
 def hidden_layer_test(csv):
     # Best activation function and solver combination found
@@ -87,8 +37,8 @@ def hidden_layer_test(csv):
     # Test variables
     num_test = 20
     train_ratio = 0.8
-    max_layers = 5
-    max_neuron = 40
+    max_layers = 6
+    max_neuron = 60
     neuron_iterate = 1
     max_iteration = 50000
     results = [[[] for j in range(max_neuron//neuron_iterate)] for i in range(max_layers)]
@@ -115,7 +65,6 @@ def hidden_layer_test(csv):
 
         # Plotting
         plt.plot(x, y, "bo--")
-        y_min, y_max = plt.gca().get_ylim()
         for i,j in zip(x,y):
             if j != y[i//neuron_iterate-2]:
                 plt.annotate(str(round(j,4)),xy=(i,j))
@@ -126,16 +75,12 @@ def hidden_layer_test(csv):
         plt.savefig("figures/hidden_layer_test/{} Hidden Layer".format(num_layer+1),bbox_inches="tight")
         plt.show()
         plt.figure()
-        
-        
-def iteration_test(csv):
-    pass
 
 def main():
     # Reading csv file into dataframe
     csv = pd.read_csv("diabetes.csv")
-
-    # activation_solver_test(csv)
+    
+    # Run test function
     hidden_layer_test(csv)
 
 if __name__ == "__main__":
