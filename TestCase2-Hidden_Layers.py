@@ -64,7 +64,7 @@ def hidden_layer_test(csv):
         x = [num_neuron for num_neuron in range(neuron_iterate, max_neuron+neuron_iterate, neuron_iterate)]
 
         # Plotting
-        plt.plot(x, y, "bo--")
+        plt.plot(x, y, "r.--")
         for i,j in zip(x,y):
             if j != y[i//neuron_iterate-2]:
                 plt.annotate(str(round(j,4)),xy=(i,j))

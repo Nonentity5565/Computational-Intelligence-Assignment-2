@@ -34,11 +34,11 @@ def iteration_test(csv):
     solver = "lbfgs"
     
     # Test variables
-    num_test = 20
+    num_test = 30
     train_ratio = 0.8
     hidden_layer = (6, 6, 6, 6)
-    iteration_cap = 1000
-    iteration_hops = 5
+    iteration_cap = 100
+    iteration_hops = 1
     results = [[] for count in range(iteration_cap//iteration_hops)]
 
     # Run test
@@ -54,10 +54,7 @@ def iteration_test(csv):
     y = [sum(result)/num_test for result in results]
 
     plt.figure()
-    plt.plot(x,y)
-    for i,j in zip(x,y):
-            if j != y[i//iteration_hops-2]:
-                plt.annotate(str(round(j,4)),xy=(i,j))
+    plt.plot(x,y, "r.--")
                 
     plt.title("Iteration Test")
     plt.ylabel("Mean Score")

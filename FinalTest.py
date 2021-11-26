@@ -22,7 +22,7 @@ def split_data(csv, train_ratio, random_val, scale=True):
     return [x_train, x_test, y_train, y_test]
 
 # Generates neural network and runs fitting and prediction. Returns predictions, confusion matrix, and score
-def neural_network(data, hidden_layer_size, activation, solver, max_iter, shuffle = True, random_state = None):
+def neural_network(data, hidden_layer_size, activation, solver, max_iter, shuffle = False, random_state = None):
     mlp = MLPClassifier(hidden_layer_size, activation=activation, solver=solver, max_iter=max_iter, shuffle=shuffle, random_state=random_state)
     mlp.fit(data[0], data[2])
     prediction = mlp.predict(data[1])
@@ -35,17 +35,17 @@ def final_test(csv):
     solver = "lbfgs"
     
     # Test variables
-    num_test = 5
+    num_test = 200
     train_ratio = 0.8
     hidden_layer = (6, 6, 6, 6)
-    max_iteration = 100
+    max_iteration = 20
     results = [[], []]
 
     # Run test
     for test in range(num_test):
         print("Test run {} beginning".format(test+1))
         data = split_data(csv, train_ratio, test, True)
-        result = neural_network(data, hidden_layer, activation, solver, max_iteration, True, test)
+        result = neural_network(data, hidden_layer, activation, solver, max_iteration, False, test)
         results[0].append(result[1])
         results[1].append(result[2])
         print("Test run {} completed\n".format(test+1))
@@ -55,6 +55,17 @@ def final_test(csv):
     print("Mean Score: {}".format(mean_score))
     print("Summed Confusion Matrix:")
     print(sum(results[0]))
+
+    x = [i for i in range(1,num_test+1)]
+    y = results[1]
+    plt.figure()
+    plt.plot(x,y, "r.--")
+                
+    plt.title("Final Test")
+    plt.ylabel("Score")
+    plt.xlabel("Test Run")
+    plt.savefig("figures/Final_test/Final result",bbox_inches="tight")
+    plt.show()
 
 def main():
     # Reading csv file into dataframe
