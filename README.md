@@ -1,6 +1,5 @@
 # Neural Network Diabetes Prediction
-## Computational Intelligence Assignment 2
-Students are tasked with finding a dataset from [Kaggle](https://www.kaggle.com/) and implement a Neural Network System based on the dataset chosen.
+Students of Computational Intelligence (CSC3034) at Sunway University were tasked with finding a dataset from [Kaggle](https://www.kaggle.com/) and implement a Neural Network System based on the dataset chosen.
 
 ***
 
