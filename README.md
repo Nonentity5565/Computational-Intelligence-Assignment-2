@@ -12,21 +12,15 @@ The neural network will utilize this dataset to predict whether a patient is dia
 patient has had
 * Glucose – Plasma glucose concentration
 from 2 hours in oral glucose tolerance test
-* Glucose – Plasma glucose concentration
- BloodPressure – Diastolic blood pressure
+* BloodPressure – Diastolic blood pressure
 (mm Hg)
-* Glucose – Plasma glucose concentration
- SkinThickness – Thickness of the patient’s
+* SkinThickness – Thickness of the patient’s
 triceps skin folds (mm)
-* Glucose – Plasma glucose concentration
- Insulin – 2 hours serum insulin (mu U/ml)
-* Glucose – Plasma glucose concentration
- BMI – Body Mass Index measured from
+* Insulin – 2 hours serum insulin (mu U/ml)
+* BMI – Body Mass Index measured from
 weight(kg) / height(m)2
-* Glucose – Plasma glucose concentration
- Age – Age of the patient in years
-* Glucose – Plasma glucose concentration
- DiabetesPedigreeFunction – Risk of diabetes
+* Age – Age of the patient in years
+* DiabetesPedigreeFunction – Risk of diabetes
 based on family history
 
 ---
