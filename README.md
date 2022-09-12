@@ -10,17 +10,23 @@ The dataset chosen for this assignment was the [Pima Indians Diabetes Database](
 The neural network will utilize this dataset to predict whether a patient is diabetic based on:
 * Pregnancies – Number of pregnancies the
 patient has had
-• Glucose – Plasma glucose concentration
+* Glucose – Plasma glucose concentration
 from 2 hours in oral glucose tolerance test
-• BloodPressure – Diastolic blood pressure
+* Glucose – Plasma glucose concentration
+ BloodPressure – Diastolic blood pressure
 (mm Hg)
-• SkinThickness – Thickness of the patient’s
+* Glucose – Plasma glucose concentration
+ SkinThickness – Thickness of the patient’s
 triceps skin folds (mm)
-• Insulin – 2 hours serum insulin (mu U/ml)
-• BMI – Body Mass Index measured from
+* Glucose – Plasma glucose concentration
+ Insulin – 2 hours serum insulin (mu U/ml)
+* Glucose – Plasma glucose concentration
+ BMI – Body Mass Index measured from
 weight(kg) / height(m)2
-• Age – Age of the patient in years
-• DiabetesPedigreeFunction – Risk of diabetes
+* Glucose – Plasma glucose concentration
+ Age – Age of the patient in years
+* Glucose – Plasma glucose concentration
+ DiabetesPedigreeFunction – Risk of diabetes
 based on family history
 
 ---
