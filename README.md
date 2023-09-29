@@ -40,6 +40,9 @@ The assignment was completed by implemented Multi-Layer Perceptron (MLP) Neural 
 ---
 
 ### Results
+
+Read the full report [here](https://github.com/Nonentity5565/Neural-Network-Diabetes-Prediction/blob/main/report.pdf)
+
 The final setting for the MLP Neural Network are as such:
 * Activation function - Identity Function
 * Solver - Limited-memory BFGS solver
